@@ -18,7 +18,7 @@ include_directories(
         "${PHP_SRC_PATH}/ext/date/lib"
         "${PHP_SRC_PATH}/sapi")
 
-configure_file(src/entrypoint.php src/entrypoint.php COPYONLY)
+configure_file(src/entrypoint.php entrypoint.php COPYONLY)
 
 add_executable(phpe src/main.c)
 
