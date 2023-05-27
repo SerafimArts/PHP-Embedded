@@ -15,6 +15,14 @@ docker run \
     phpe /home/phpe/docker/build.sh
 ```
 
+### Usage (Docker)
+
+- An assembly will be in `build/phpe`
+
+```sh
+./build/phpe
+```
+
 ## Building (Linux/WSL)
 
 - Download sources into `vendor/php-X.Y.Z`
@@ -36,3 +44,11 @@ docker run \
   ```sh
   cmake --build ./build --target phpe
   ```
+
+### Usage (Linux/WSL)
+
+- An assembly will be in `build/phpe`
+
+```sh
+./build/phpe
+```
