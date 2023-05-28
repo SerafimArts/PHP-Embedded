@@ -31,7 +31,7 @@ docker run \
   # Like this
   cd vendor/php-X.Y.Z
   ./buildconf
-  ./configure --enable-embed
+  ./configure --enable-embed=static --disable-all
   make -j "$(nproc)";
   ``` 
 - Open `CMakeLists.txt`

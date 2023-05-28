@@ -46,11 +46,11 @@ RUN set -eux; \
         libargon2-dev \
         libcurl4-openssl-dev \
         libonig-dev \
-        libreadline-dev \
         libsodium-dev \
         libsqlite3-dev \
         libssl-dev \
         libxml2-dev \
+        libffi-dev \
         zlib1g-dev
 
 CMD ["docker/build.sh"]

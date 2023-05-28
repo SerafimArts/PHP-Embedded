@@ -18,8 +18,19 @@ include_directories(
         "${PHP_SRC_PATH}/ext/date/lib"
         "${PHP_SRC_PATH}/sapi")
 
-configure_file(src/entrypoint.php entrypoint.php COPYONLY)
+configure_file(src/main.php main.php COPYONLY)
 
 add_executable(phpe src/main.c)
 
-target_link_libraries(phpe "${PHP_SRC_PATH}/libs/libphp.so")
+target_link_libraries(phpe PRIVATE ${PHP_SRC_PATH}/libs/libphp.a
+    m
+    dl
+    resolv
+    util
+    sodium
+    onig
+    ffi
+    xml2
+    sqlite3
+)
+
