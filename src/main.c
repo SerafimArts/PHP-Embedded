@@ -1,3 +1,8 @@
+#if defined(_WIN32) || defined(_WIN64) || defined(__CYGWIN__)
+    #define PHP_WIN32 1
+    #define ZEND_WIN32 1
+#endif
+
 #include <sapi/embed/php_embed.h>
 
 const char EMBEDDED_PHP_INI[] =

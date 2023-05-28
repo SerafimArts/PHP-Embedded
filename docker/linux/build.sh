@@ -49,6 +49,7 @@ if [ ! -f "${SOURCE_DIR}/php-$PHP_VERSION/Zend/zend_config.h" ]; then
     --disable-cgi \
     --disable-short-tags \
     --disable-session \
+    --disable-zts \
     --with-ffi \
     --with-curl
 fi

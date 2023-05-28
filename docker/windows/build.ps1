@@ -20,6 +20,6 @@ git checkout php-sdk-$PHP_SDK_TOOLS_VERSION
 # Building PHP
 #
 
-cd $PHP_SDK_TOOLS/bin
+# TODO
 
 While($true) {}
