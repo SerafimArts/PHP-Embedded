@@ -2,7 +2,9 @@
 
 An example of using the Embedded PHP SAPI
 
-## Building (Linux/Debian)
+## Building
+
+### Linux/Debian
 
 - Make sure you are using Docker `Linux Containers`
 - Build Docker Image
@@ -11,7 +13,7 @@ An example of using the Embedded PHP SAPI
   ```
 - An assembly will be in `build/php-X.Y.Z/phpe`
 
-## Building (Windows/LTSC2022)
+### Windows/LTSC2022
 
 > TODO: Not implemented yet
 
