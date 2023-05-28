@@ -1,3 +1,6 @@
 <?php
 
-print_r(get_loaded_extensions());
+echo 'SAPI: ' . php_sapi_name() . "\n";
+
+var_dump(get_loaded_extensions());
+var_dump($_SERVER);
