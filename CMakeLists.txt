@@ -6,7 +6,10 @@ if (NOT CMAKE_C_STANDARD)
     set(CMAKE_C_STANDARD 99)
 endif ()
 
-set(PHP_VERSION 8.2.6)
+if (NOT PHP_VERSION)
+    set(PHP_VERSION 8.2.6)
+endif()
+
 set(PHP_SRC_PATH "${CMAKE_CURRENT_SOURCE_DIR}/vendor/php-${PHP_VERSION}")
 
 include_directories(

@@ -1,4 +1,3 @@
-
 FROM debian:bullseye-slim
 
 WORKDIR /home/phpe
@@ -36,6 +35,7 @@ RUN set -eux; \
         curl \
         wget \
         xz-utils \
+        unzip \
     ; \
     rm -rf /var/lib/apt/lists/*
 

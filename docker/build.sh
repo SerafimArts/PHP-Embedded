@@ -1,7 +1,8 @@
 #!/bin/sh
 
 if [ -z "$PHP_VERSION" ]; then
-  export PHP_VERSION=8.2.6
+  echo "PHP_VERSION variable required"
+  exit 1
 fi
 
 export PHP_URL="https://www.php.net/distributions/php-$PHP_VERSION.tar.xz"
@@ -12,7 +13,7 @@ export ROOT_DIR
 VENDOR_DIR="$( realpath -e -- "$( dirname "$0" )/../vendor"; )"
 export VENDOR_DIR
 
-BUILD_DIR="$( realpath -e -- "$( dirname "$0" )/../build"; )"
+BUILD_DIR="$( realpath -e -- "$( dirname "$0" )/../build"; )/php-$PHP_VERSION"
 export BUILD_DIR
 
 #
@@ -54,11 +55,15 @@ fi
 # compile
 make -j "$(nproc)";
 
-echo "Creating build directory ${BUILD_DIR}"
+echo " - Creating build directory ${BUILD_DIR}"
 mkdir -p "${BUILD_DIR}"
 
-echo 'Building...'
-cmake -DCMAKE_BUILD_TYPE=Release -G 'CodeBlocks - Unix Makefiles' -S "${ROOT_DIR}" -B "${BUILD_DIR}"
+echo " - Building ${BUILD_DIR}"
+cmake -DCMAKE_BUILD_TYPE=Release -S "${ROOT_DIR}" -B "${BUILD_DIR}"
 
-echo 'Compile...'
+echo " - Compile ${BUILD_DIR}"
 cmake --build "${BUILD_DIR}" --target phpe
+
+echo " - Executing ${BUILD_DIR}/phpe"
+cd "${BUILD_DIR}"
+./phpe
