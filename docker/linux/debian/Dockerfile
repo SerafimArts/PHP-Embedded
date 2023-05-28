@@ -53,4 +53,4 @@ RUN set -eux; \
         libffi-dev \
         zlib1g-dev
 
-CMD ["docker/build.sh"]
+CMD ["docker/linux/build.sh"]

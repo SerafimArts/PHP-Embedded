@@ -5,15 +5,16 @@ if [ -z "$PHP_VERSION" ]; then
   exit 1
 fi
 
-export PHP_URL="https://www.php.net/distributions/php-$PHP_VERSION.tar.xz"
-
-ROOT_DIR="$( realpath -e -- "$( dirname "$0" )/.."; )"
+ROOT_DIR="$( realpath -e -- "$( dirname "$0" )/../.."; )"
 export ROOT_DIR
 
-VENDOR_DIR="$( realpath -e -- "$( dirname "$0" )/../vendor"; )"
-export VENDOR_DIR
+DOWNLOAD_DIR="${ROOT_DIR}/vendor"
+export DOWNLOAD_DIR
 
-BUILD_DIR="$( realpath -e -- "$( dirname "$0" )/../build"; )/php-$PHP_VERSION"
+SOURCE_DIR="${ROOT_DIR}/vendor"
+export SOURCE_DIR
+
+BUILD_DIR="${ROOT_DIR}/build/php-$PHP_VERSION"
 export BUILD_DIR
 
 #
@@ -21,23 +22,23 @@ export BUILD_DIR
 #
 
 # download repository
-if [ ! -f "${VENDOR_DIR}/php-$PHP_VERSION.tar.xz" ]; then
+if [ ! -f "${DOWNLOAD_DIR}/php-$PHP_VERSION.tar.xz" ]; then
   echo "Downloading PHP $PHP_VERSION"
-  wget -O ${VENDOR_DIR}/php-$PHP_VERSION.tar.xz "$PHP_URL";
+  wget -O ${DOWNLOAD_DIR}/php-$PHP_VERSION.tar.xz "https://www.php.net/distributions/php-$PHP_VERSION.tar.xz";
 fi
 
 # extract repository
-if [ ! -f "${VENDOR_DIR}/php-$PHP_VERSION/buildconf" ]; then
-    echo "Extracting sources into ${VENDOR_DIR}/php-$PHP_VERSION"
+if [ ! -f "${SOURCE_DIR}/php-$PHP_VERSION/buildconf" ]; then
+    echo "Extracting sources into ${SOURCE_DIR}/php-$PHP_VERSION"
 
-    mkdir -p "${VENDOR_DIR}/php-$PHP_VERSION"
-    tar -Jxf "${VENDOR_DIR}/php-$PHP_VERSION.tar.xz" -C "${VENDOR_DIR}/php-$PHP_VERSION" --strip-components=1
+    mkdir -p "${SOURCE_DIR}/php-$PHP_VERSION"
+    tar -Jxf "${DOWNLOAD_DIR}/php-$PHP_VERSION.tar.xz" -C "${SOURCE_DIR}/php-$PHP_VERSION" --strip-components=1
 fi
 
-cd "${VENDOR_DIR}/php-$PHP_VERSION" || exit 1
+cd "${SOURCE_DIR}/php-$PHP_VERSION" || exit 1
 
 # configure
-if [ ! -f "${VENDOR_DIR}/php-$PHP_VERSION/Zend/zend_config.h" ]; then
+if [ ! -f "${SOURCE_DIR}/php-$PHP_VERSION/Zend/zend_config.h" ]; then
   ./configure \
     --enable-embed=static \
     --enable-shmop \

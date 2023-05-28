@@ -5,7 +5,7 @@ x-environment: &environment
 
 services:
   phpe-debian:
-    build: docker/phpe-debian
+    build: docker/linux/debian
     container_name: phpe-debian
     working_dir: /home/phpe
     environment:
