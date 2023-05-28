@@ -32,5 +32,6 @@ target_link_libraries(phpe PRIVATE ${PHP_SRC_PATH}/libs/libphp.a
     ffi
     xml2
     sqlite3
+    curl
 )
 
