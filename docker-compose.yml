@@ -12,3 +12,11 @@ services:
       <<: *environment
     volumes:
       - .:/home/phpe
+  phpe-windows:
+    build: docker/windows/ltsc2022
+    container_name: phpe-windows
+    working_dir: c:\phpe
+    environment:
+      <<: *environment
+    volumes:
+      - .:c:\phpe
